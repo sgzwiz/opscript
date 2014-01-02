@@ -1,0 +1,9 @@
+; opscriptctrl.def : Declares the module parameters.
+
+LIBRARY      "opscriptctrl.dll"
+
+EXPORTS
+  DllCanUnloadNow      PRIVATE
+  DllGetClassObject    PRIVATE
+  DllRegisterServer    PRIVATE
+  DllUnregisterServer   PRIVATE

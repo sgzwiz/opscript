@@ -1,0 +1,68 @@
+HKCR
+{
+  .ops = s 'OpScriptFile'
+  {
+  }
+  
+  .pas = s 'DelphiUnit'
+  {
+  }
+
+  OpScript = s 'OpScript Language'
+  {
+    CLSID = s '{7F770D4B-2A9C-41B5-8AD0-E217721E1DD9}'
+    ForceRemove 'OLEScript'
+  }
+  
+  NoRemove CLSID
+  {
+    ForceRemove {7F770D4B-2A9C-41B5-8AD0-E217721E1DD9} = s 'OpScript Language'
+    {
+      ForceRemove 'Implemented Categories'
+      {
+        ForceRemove '{F0B7A1A1-9847-11CF-8F20-00805F2CD064}'
+        ForceRemove '{F0B7A1A2-9847-11CF-8F20-00805F2CD064}'
+      }
+      ProgID = s 'OpScript'
+      ForceRemove 'OLEScript'
+      InprocServer32 = s '%MODULE%'
+      {
+        val ThreadingModel = s 'Apartment'
+      }
+     'TypeLib' = s '{B4DF1D75-5469-4227-A82E-A2E3DCC12E40}'
+    }
+  }
+  
+  DelphiUnit
+  {
+    ScriptEngine = s 'OpScript'
+  
+    Shell
+    {
+      Execute = s '&Execute'
+      {
+        Command = s '%SCRIPT_HOST% "%%1 %%*"'
+      }
+      Execute2 = s 'Execute &with Command Prompt'
+      {
+        Command = s '%CMD_SCRIPT_HOST% "%%1" %%*'
+      }
+    }
+  }
+  ForceRemove OpScriptFile = s 'OpScript Script File'
+  {
+    DefaultIcon = s '%SCRIPT_HOST%,3'
+    ScriptEngine = s 'OpScript'
+    Shell
+    {
+      Open = s '&Open'
+      {
+        Command = s '%SCRIPT_HOST% "%%1 %%*"'
+      }
+      Open2 = s 'Open &with Command Prompt'
+      {
+        Command = s '%CMD_SCRIPT_HOST% "%%1" %%*'
+      }
+    }
+  }
+}

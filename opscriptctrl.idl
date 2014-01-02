@@ -1,0 +1,49 @@
+// opscriptctrl.idl : IDL source for opscriptctrl.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (opscriptctrl.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+  [
+    object,
+    uuid(C5267F85-759C-41EA-8872-5A037E1B5145),
+    dual,
+    helpstring("IOpScript Interface"),
+    pointer_default(unique)
+  ]
+  interface IOpScript : IDispatch
+  {
+  };
+
+[
+  uuid(B4DF1D75-5469-4227-A82E-A2E3DCC12E40),
+  version(1.0),
+  helpstring("opscriptctrl 1.0 Type Library")
+]
+library OPSCRIPTCTRLLib
+{
+  importlib("stdole32.tlb");
+  importlib("stdole2.tlb");
+
+  [
+    uuid(E93EE80D-2EA3-426D-9F9F-9CB235FB28D1),
+    helpstring("_IOpScriptEvents Interface")
+  ]
+  dispinterface _IOpScriptEvents
+  {
+    properties:
+    methods:
+  };
+
+  [
+    uuid(7F770D4B-2A9C-41B5-8AD0-E217721E1DD9),
+    helpstring("OpScript Language")
+  ]
+  coclass OpScript
+  {
+    [default] interface IOpScript;
+    [default, source] dispinterface _IOpScriptEvents;
+  };
+};
